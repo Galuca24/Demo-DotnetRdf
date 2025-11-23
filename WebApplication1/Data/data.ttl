@@ -5,3 +5,11 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
 <http://example.org/Alice> <http://example.org/knows> <http://example.org/Bob>.
+<http://example.org/Dog> a rdfs:Class;
+                         rdfs:subClassOf <http://example.org/Animal>.
+<http://example.org/Jon> <http://example.org/isFriendWith> <http://example.org/Alice>;
+                         <http://example.org/knows> <http://example.org/Alice>.
+<http://example.org/Rex> a <http://example.org/Dog>,
+                           <http://example.org/Animal>.
+<http://example.org/isFriendWith> a rdf:Property;
+                                  rdfs:subPropertyOf <http://example.org/knows>.

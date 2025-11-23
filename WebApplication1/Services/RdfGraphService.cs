@@ -20,16 +20,16 @@ namespace SemanticKnowledgeAPI.Services
                 {
                     var parser = new TurtleParser();
                     parser.Load(_graph, _dataFilePath);
-                    Console.WriteLine($"✅ RDF data loaded from {_dataFilePath}");
+                    Console.WriteLine($" RDF data loaded from {_dataFilePath}");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"⚠️ Failed to load RDF file: {ex.Message}");
+                    Console.WriteLine($" Failed to load RDF file: {ex.Message}");
                 }
             }
             else
             {
-                Console.WriteLine($"ℹ️ No existing RDF file found, starting with empty graph.");
+                Console.WriteLine($" No existing RDF file found, starting with empty graph.");
             }
         }
 
