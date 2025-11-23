@@ -11,5 +11,8 @@
                          <http://example.org/knows> <http://example.org/Alice>.
 <http://example.org/Rex> a <http://example.org/Dog>,
                            <http://example.org/Animal>.
+<http://example.org/ana> <http://example.org/relationship/knows> <http://example.org/matei>,
+                                                                 <http://example.org/mihai>.
 <http://example.org/isFriendWith> a rdf:Property;
                                   rdfs:subPropertyOf <http://example.org/knows>.
+<http://example.org/nata> <http://example.org/relationship/loves> <http://example.org/don>.

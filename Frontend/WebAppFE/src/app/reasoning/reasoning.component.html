@@ -1,0 +1,19 @@
+<div class="reasoning-panel">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Reasoning</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="data__content">
+      <button mat-raised-button color="primary" (click)="performReasoning()">
+        Perform Reasoning
+      </button>
+
+      <div class="reasoning__results" *ngIf="reasoningDone">
+        <h3>Response for Reasoning:</h3>
+        <div class="reasoning-response">
+          {{ reasoningResponse }}
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</div>

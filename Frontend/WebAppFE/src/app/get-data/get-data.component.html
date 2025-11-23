@@ -1,0 +1,25 @@
+<div class="get-data-panel">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Get Data</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="data__content">
+      <button mat-raised-button color="primary" (click)="fetchData()">
+        Display Data
+      </button>
+
+      <div class="data__results" *ngIf="data.length > 0 && dataFetched">
+        <h3>Fetched Data:</h3>
+        <ul class="triplet-list">
+          <li *ngFor="let item of data" class="triplet-item">
+            <span class="name">{{ item.firstPersonName }}</span>
+            <span class="verb-divider">
+              &mdash; {{ item.relationship }} &mdash;</span
+            >
+            <span class="name">{{ item.secondPersonName }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</div>

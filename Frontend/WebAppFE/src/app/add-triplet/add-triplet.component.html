@@ -1,0 +1,100 @@
+<div class="add-triplet">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Add Triplet</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form #tripletForm="ngForm">
+      <div class="inputs">
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>First Person Name</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="firstPersonName"
+            required
+            name="p1Name"
+            #firstPersonNameInput="ngModel"
+          />
+          <mat-hint
+            >Enter the name of the first person in the relationship</mat-hint
+          >
+          <mat-error
+            *ngIf="
+              firstPersonNameInput.invalid &&
+              (firstPersonNameInput.dirty || firstPersonNameInput.touched)
+            "
+          >
+            This field is required and cannot be empty.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Relationship</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="relationship"
+            required
+            name="relationship"
+            #relationshipInput="ngModel"
+          />
+          <mat-hint>Enter relationship between the two persons</mat-hint>
+          <mat-error
+            *ngIf="
+              relationshipInput.invalid &&
+              (relationshipInput.dirty || relationshipInput.touched)
+            "
+          >
+            This field is required and cannot be empty.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Second Person Name</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="secondPersonName"
+            required
+            name="p2Name"
+            #secondPersonNameInput="ngModel"
+          />
+          <mat-hint
+            >Enter the name of the second person in the relationship</mat-hint
+          >
+          <mat-error
+            *ngIf="
+              secondPersonNameInput.invalid &&
+              (secondPersonNameInput.dirty || secondPersonNameInput.touched)
+            "
+          >
+            This field is required and cannot be empty.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="actions">
+        <button
+          mat-raised-button
+          color="warn"
+          type="button"
+          (click)="onClear(tripletForm)"
+          style="margin-right: 12px"
+        >
+          Clear
+        </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="tripletForm.invalid"
+          (click)="onSubmit()"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-expansion-panel>
+</div>

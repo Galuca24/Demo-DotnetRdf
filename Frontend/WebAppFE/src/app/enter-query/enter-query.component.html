@@ -1,0 +1,76 @@
+<div class="query-panel">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Enter Custom Query</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="query__content">
+      <form #queryForm="ngForm">
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Custom Query</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="customQuery"
+            required
+            name="customQuery"
+            #customQueryInput="ngModel"
+          />
+          <mat-hint>Enter your custom query here</mat-hint>
+          <mat-error
+            *ngIf="
+              customQueryInput.invalid &&
+              (customQueryInput.dirty || customQueryInput.touched)
+            "
+          >
+            This field is required and cannot be empty.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="queryForm.invalid"
+            (click)="onSubmitQuery()"
+          >
+            Submit Query
+          </button>
+        </div>
+
+        <div
+          class="query-results-container"
+          *ngIf="queryResults && queryResults.length > 0"
+        >
+          <h3>Rezultate Găsite ({{ queryResults.length }}):</h3>
+
+          <div
+            *ngFor="let item of queryResults; let isLast = last"
+            class="triplet-result"
+          >
+            <div class="result-row">
+              <div class="result-predicate">
+                <span class="label">Predicat:</span>
+                <span class="value">{{ item["predicat"] }}</span>
+              </div>
+
+              <div class="result-object">
+                <span class="label">Obiect:</span>
+                <span class="value">{{ item["obiect"] }}</span>
+              </div>
+            </div>
+
+            <hr *ngIf="!isLast" class="result-separator" />
+          </div>
+        </div>
+
+        <div
+          class="no-results-message"
+          *ngIf="queryResults && queryResults.length === 0"
+        >
+          Nu au fost găsite rezultate pentru această interogare.
+        </div>
+      </form>
+    </div>
+  </mat-expansion-panel>
+</div>

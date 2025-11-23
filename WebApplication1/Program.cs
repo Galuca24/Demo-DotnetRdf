@@ -11,15 +11,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<RdfGraphService>();
 builder.Services.AddSingleton<SparqlService>();
 builder.Services.AddSingleton<ReasonerService>();
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          // 👈 Permite cereri doar de pe serverul Angular de dezvoltare
+                          policy.WithOrigins("http://localhost:4200") 
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                      });
 });
 
 var app = builder.Build();
@@ -32,6 +35,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
