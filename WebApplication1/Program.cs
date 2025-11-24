@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          // 👈 Permite cereri doar de pe serverul Angular de dezvoltare
+                          
                           policy.WithOrigins("http://localhost:4200") 
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();

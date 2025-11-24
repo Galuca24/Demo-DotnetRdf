@@ -8,7 +8,7 @@ import { Triplet } from './triplet-model';
   providedIn: 'root',
 })
 export class RdfService {
-  private readonly BASE_URL = 'http://localhost:5083';
+  private readonly BASE_URL = 'https://localhost:7148';
   private readonly BASE_URI = 'http://example.org/';
 
   private addTripleUrl = `${this.BASE_URL}/api/Graph/triple`;
@@ -50,9 +50,10 @@ export class RdfService {
     );
   }
 
-  executeSparqlQuery(query: string): Observable<any[]> {
-    return this.http.post<any[]>(this.queryUrl, query);
-  }
+executeSparqlQuery(queryString: string): Observable<any[]> {
+    const body = { query: queryString };  
+    return this.http.post<any[]>(this.queryUrl, body);
+}
 
   applyReasoning(): Observable<string> {
     return this.http.post(this.reasoningUrl, null, {
