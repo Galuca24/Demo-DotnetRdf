@@ -48,17 +48,14 @@
             *ngFor="let item of queryResults; let isLast = last"
             class="triplet-result"
           >
-            <div class="result-row">
-              <div class="result-predicate">
-                <span class="label">Predicat:</span>
-                <span class="value">{{ item["predicat"] }}</span>
-              </div>
-
-              <div class="result-object">
-                <span class="label">Obiect:</span>
-                <span class="value">{{ item["obiect"] }}</span>
-              </div>
-            </div>
+<div class="result-row" style="display: flex; flex-wrap: wrap; gap: 15px;">
+  <div *ngFor="let column of item | keyvalue" class="result-column">
+    <span class="label" style="font-weight: bold; text-transform: capitalize;">
+      {{ column.key }}:
+    </span>
+    <span class="value">{{ column.value }}</span>
+  </div>
+</div>
 
             <hr *ngIf="!isLast" class="result-separator" />
           </div>

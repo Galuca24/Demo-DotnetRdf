@@ -75,7 +75,7 @@ namespace SemanticKnowledgeAPI.Services
             Directory.CreateDirectory("Data");
             var writer = new CompressingTurtleWriter();
             writer.Save(_graph, _dataFilePath);
-            Console.WriteLine($"💾 RDF graph saved to {_dataFilePath}");
+            Console.WriteLine($" RDF graph saved to {_dataFilePath}");
         }
 
         public IGraph GetGraph() => _graph;

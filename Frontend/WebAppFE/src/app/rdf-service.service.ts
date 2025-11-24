@@ -8,7 +8,7 @@ import { Triplet } from './triplet-model';
   providedIn: 'root',
 })
 export class RdfService {
-  private readonly BASE_URL = 'http://localhost:5083';
+  private readonly BASE_URL = 'https://localhost:7148';
   private readonly BASE_URI = 'http://example.org/';
 
   private addTripleUrl = `${this.BASE_URL}/api/Graph/triple`;
@@ -27,7 +27,7 @@ export class RdfService {
       this.BASE_URI + triplet.secondPersonName.replace(/ /g, '_');
 
     const predicateUri =
-      this.BASE_URI + 'relationship/' + triplet.relationship.replace(/ /g, '_');
+      this.BASE_URI  + triplet.relationship.replace(/ /g, '_');
 
     const params = new HttpParams()
       .set('s', subjectUri)

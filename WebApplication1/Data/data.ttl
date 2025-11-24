@@ -4,16 +4,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
-<http://example.org/Alice> <http://example.org/knows> <http://example.org/Bob>.
-<http://example.org/Diana> <http://example.org/relationship/isFriendWith> <http://example.org/Mihai>.
 <http://example.org/Dog> a rdfs:Class;
                          rdfs:subClassOf <http://example.org/Animal>.
-<http://example.org/Jon> <http://example.org/isFriendWith> <http://example.org/Alice>;
-                         <http://example.org/knows> <http://example.org/Alice>.
+<http://example.org/Ion> <http://example.org/isFriendWith> <http://example.org/Maria>;
+                         <http://example.org/knows> <http://example.org/Maria>.
+<http://example.org/Maria> <http://example.org/isFriendWith> <http://example.org/George>;
+                           <http://example.org/knows> <http://example.org/George>.
 <http://example.org/Rex> a <http://example.org/Dog>,
                            <http://example.org/Animal>.
-<http://example.org/ana> <http://example.org/relationship/knows> <http://example.org/matei>,
-                                                                 <http://example.org/mihai>.
 <http://example.org/isFriendWith> a rdf:Property;
                                   rdfs:subPropertyOf <http://example.org/knows>.
-<http://example.org/nata> <http://example.org/relationship/loves> <http://example.org/don>.

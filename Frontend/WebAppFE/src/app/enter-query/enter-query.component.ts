@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, KeyValuePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +20,7 @@ export interface SparqlQueryResult {
     FormsModule,
     CommonModule,
     MatButtonModule,
+    KeyValuePipe
   ],
   templateUrl: './enter-query.component.html',
   styleUrl: './enter-query.component.css',
@@ -37,6 +38,7 @@ export class EnterQueryComponent {
 
     this.rdfService.executeSparqlQuery(this.customQuery).subscribe({
       next: (results) => {
+        console.log('Rezultate Backend:', results);
         this.queryResults = results;
       },
       error: (err) => {
