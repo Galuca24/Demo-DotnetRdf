@@ -1,8 +1,8 @@
 .reasoning-panel {
-  min-width: 600px;
+  width: 1000px;
 
   .data__content {
-    min-width: 500px;
+    min-width: 950px;
   }
 
   h3 {

@@ -1,0 +1,36 @@
+<div class="export-panel">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Export RDF Graph</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="query__content">
+      <form #exportForm="ngForm">
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>Select Export Format</mat-label>
+          <mat-select [(ngModel)]="exportFormat" name="exportFormat">
+            <mat-option *ngFor="let format of formats" [value]="format">
+              {{ format | uppercase }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            (click)="onExportData()"
+          >
+            Get Data & Show
+          </button>
+        </div>
+      </form>
+
+      <div class="export-results-container" *ngIf="exportData !== null">
+        <h3>Export Content ({{ exportFormat | uppercase }})</h3>
+        <pre class="raw-content">{{ exportData }}</pre>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</div>

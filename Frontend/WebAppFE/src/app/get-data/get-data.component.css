@@ -1,5 +1,5 @@
 .get-data-panel {
-  min-width: 600px;
+  width: 1000px;
 
   .data__results {
     padding-top: 2rem;

@@ -4,6 +4,8 @@ import { AddTripletComponent } from './add-triplet/add-triplet.component';
 import { GetDataComponent } from './get-data/get-data.component';
 import { EnterQueryComponent } from './enter-query/enter-query.component';
 import { ReasoningComponent } from './reasoning/reasoning.component';
+import { GetExportDataComponent } from './get-export-data/get-export-data.component';
+import { DbpediaQueryComponent } from './dbpedia-query/dbpedia-query.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,8 @@ import { ReasoningComponent } from './reasoning/reasoning.component';
     GetDataComponent,
     EnterQueryComponent,
     ReasoningComponent,
+    GetExportDataComponent,
+    DbpediaQueryComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

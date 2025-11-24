@@ -1,8 +1,8 @@
 .query-panel {
-  min-width: 600px;
+  width: 1000px;
 
   .query__content {
-    min-width: 500px;
+    min-width: 950px;
   }
 
   .full-width-input {

@@ -8,13 +8,15 @@ import { Triplet } from './triplet-model';
   providedIn: 'root',
 })
 export class RdfService {
-  private readonly BASE_URL = 'https://localhost:7148';
+  private readonly BASE_URL = 'http://localhost:5083';
   private readonly BASE_URI = 'http://example.org/';
 
   private addTripleUrl = `${this.BASE_URL}/api/Graph/triple`;
   private getTriplesUrl = `${this.BASE_URL}/api/Graph`;
   private queryUrl = `${this.BASE_URL}/api/Query`;
   private reasoningUrl = `${this.BASE_URL}/api/Reasoning`;
+  private exportUrl = `${this.BASE_URL}/api/Graph/export`;
+  private externalQueryUrl = `${this.BASE_URL}/api/External/dbpedia`;
 
   constructor(private http: HttpClient) {}
 
@@ -50,14 +52,31 @@ export class RdfService {
     );
   }
 
-executeSparqlQuery(queryString: string): Observable<any[]> {
-    const body = { query: queryString };  
+  executeSparqlQuery(queryString: string): Observable<any[]> {
+    const body = { query: queryString };
     return this.http.post<any[]>(this.queryUrl, body);
-}
+  }
 
   applyReasoning(): Observable<string> {
     return this.http.post(this.reasoningUrl, null, {
       responseType: 'text',
+    });
+  }
+
+  exportRdfGraph(format: string = 'turtle'): Observable<string> {
+    const params = new HttpParams().set('format', format);
+
+    return this.http.get(this.exportUrl, {
+      params: params,
+      responseType: 'text',
+    });
+  }
+
+  queryDbpedia(query: string): Observable<any[]> {
+    const params = new HttpParams().set('query', query);
+
+    return this.http.get<any[]>(this.externalQueryUrl, {
+      params: params,
     });
   }
 }

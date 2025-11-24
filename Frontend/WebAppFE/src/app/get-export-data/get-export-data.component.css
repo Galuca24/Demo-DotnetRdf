@@ -1,0 +1,43 @@
+.export-panel {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.query__content {
+  min-width: 950px;
+}
+
+.full-width-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px 24px;
+}
+
+.export-results-container {
+  padding: 15px 24px;
+  margin-top: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.export-results-container h3 {
+  color: #3f51b5;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.raw-content {
+  white-space: pre-wrap;
+  background-color: #e8e8e8;
+  padding: 10px;
+  border-radius: 3px;
+  font-family: monospace, sans-serif;
+  font-size: 0.9em;
+  color: #333;
+}
