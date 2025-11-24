@@ -14,9 +14,14 @@ public class QueryController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Execute([FromBody] string query)
+    public IActionResult Execute([FromBody] SparqlQueryRequest request)
     {
-        var results = _sparql.ExecuteQuery(query);
+        var results = _sparql.ExecuteQuery(request.Query);
         return Ok(results);
     }
+}
+
+public class SparqlQueryRequest
+{
+    public string Query { get; set; }
 }

@@ -1,0 +1,20 @@
+.main-page {
+  display: flex;
+  flex-direction: column;
+  h2 {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    /* margin-bottom: 1rem; */
+    background-color: rgb(142, 142, 239);
+  }
+
+  .main-page__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+}

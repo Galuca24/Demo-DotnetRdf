@@ -1,0 +1,16 @@
+.add-triplet {
+  width: 1000px;
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 500px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px 24px;
+  }
+}

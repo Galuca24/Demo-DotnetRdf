@@ -1,0 +1,72 @@
+<div class="dbpedia-panel">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Enter DBpedia Query</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="dbpedia__content">
+      <form #dbpediaQueryForm="ngForm">
+        <mat-form-field appearance="outline" class="full-width-input">
+          <mat-label>DBpedia SPARQL Query</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="dbpediaQuery"
+            required
+            name="dbpediaQuery"
+            #dbpediaQueryInput="ngModel"
+          />
+          <mat-hint
+            >Enter your SPARQL query to run against DBpedia endpoint</mat-hint
+          >
+          <mat-error
+            *ngIf="
+              dbpediaQueryInput.invalid &&
+              (dbpediaQueryInput.dirty || dbpediaQueryInput.touched)
+            "
+          >
+            This field is required and cannot be empty.
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="dbpediaQueryForm.invalid"
+            (click)="onSubmitDbpediaQuery()"
+          >
+            Submit DBpedia Query
+          </button>
+        </div>
+
+        <div
+          class="query-results-container"
+          *ngIf="queryResults && queryResults.length > 0"
+        >
+          <h3>DBpedia Results ({{ queryResults.length }}):</h3>
+
+          <div
+            *ngFor="let item of queryResults; let isLast = last"
+            class="triplet-result"
+          >
+            <div class="result-row">
+              <div *ngFor="let key of displayedColumns" class="result-field">
+                <span class="label">{{ key | uppercase }}:</span>
+                <span class="value">{{ item[key] }}</span>
+              </div>
+            </div>
+            <hr *ngIf="!isLast" class="result-separator" />
+          </div>
+        </div>
+
+        <div
+          class="no-results-message"
+          *ngIf="queryResults && queryResults.length === 0"
+        >
+          No results found for this query on DBpedia.
+        </div>
+      </form>
+    </div>
+  </mat-expansion-panel>
+</div>

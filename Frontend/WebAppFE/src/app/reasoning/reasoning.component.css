@@ -1,0 +1,16 @@
+.reasoning-panel {
+  width: 1000px;
+
+  .data__content {
+    min-width: 950px;
+  }
+
+  h3 {
+    color: var(--mat-primary-color, #3f51b5);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    padding-top: 2rem;
+  }
+}
