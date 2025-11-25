@@ -6,10 +6,8 @@
 
 <http://example.org/Dog> a rdfs:Class;
                          rdfs:subClassOf <http://example.org/Animal>.
-<http://example.org/Ion> <http://example.org/isFriendWith> <http://example.org/Maria>;
-                         <http://example.org/knows> <http://example.org/Maria>.
-<http://example.org/Maria> <http://example.org/isFriendWith> <http://example.org/George>;
-                           <http://example.org/knows> <http://example.org/George>.
+<http://example.org/Mihai> <http://example.org/isFriendWith> <http://example.org/Ana>;
+                           <http://example.org/knows> <http://example.org/Ana>.
 <http://example.org/Rex> a <http://example.org/Dog>,
                            <http://example.org/Animal>.
 <http://example.org/isFriendWith> a rdf:Property;

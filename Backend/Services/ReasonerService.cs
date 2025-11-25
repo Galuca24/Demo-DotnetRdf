@@ -18,7 +18,7 @@ namespace SemanticKnowledgeAPI.Services
             var reasoner = new StaticRdfsReasoner();
             reasoner.Initialise(graph);
             reasoner.Apply(graph);
-            _rdf.SaveToDisk(); // Salvăm rezultatul reasoning-ului
+            _rdf.SaveToDisk(); 
             return graph.Triples.Count();
         }
     }
