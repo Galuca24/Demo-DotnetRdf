@@ -1,199 +1,125 @@
-Semantic Knowledge Graph - dotNetRDF Demo 
+# Semantic Knowledge Graph - dotNetRDF Demo
 
-This project is a demo application illustrating the power of the Semantic Web and the usage of the dotNetRDF library in a .NET Core environment, coupled with an Angular Frontend interface.
+This project is a demo application illustrating the power of the Semantic Web and the usage of the **dotNetRDF** library in a .NET Core environment, coupled with an Angular Frontend interface.
 
-The application allows for managing a Knowledge Graph, running SPARQL queries, applying logical inference (Reasoning), and querying external sources (DBpedia).
+The application allows for managing a **Knowledge Graph**, running **SPARQL queries**, applying logical inference (**Reasoning**), and querying external sources (**DBpedia**).
 
-Key Features
+---
 
-The project covers the following key concepts of dotNetRDF:
+## 🌟 Key Features
 
-RDF Graph Management (CRUD):
+The project covers the following key concepts of **dotNetRDF**:
 
-Creating and maintaining an in-memory graph (IGraph).
+###  RDF Graph Management (CRUD):
+- Creating and maintaining an in-memory graph (**IGraph**).
+- Adding triples (**Subject - Predicate - Object**).
+- Data persistence in a local file (`data.ttl`).
 
-Adding triples (Subject - Predicate - Object).
+###  Serialization and Export:
+- Exporting data in multiple formats:
+  - **Turtle** (human-readable)
+  - **JSON-LD** (for the web)
+  - **RDF/XML** (legacy)
+  - **N-Triples**
 
-Data persistence in a local file (data.ttl).
+###  SPARQL Query Engine (Leviathan):
+- Executing complex SPARQL queries directly on the in-memory graph.
+- Support for filtering, selection, and projection.
 
-Serialization and Export:
+###  Reasoning (Inference):
+- Using **StaticRdfsReasoner** to automatically deduce new information.
+- Support for **RDFS** (`subClassOf`, `subPropertyOf`).
 
-Exporting data in multiple formats: Turtle (human-readable), JSON-LD (for the web), RDF/XML (legacy), and N-Triples.
+###  Federated Querying:
+- Connecting to external SPARQL endpoints (e.g., **DBpedia**) to fetch live data from the internet.
 
-SPARQL Query Engine (Leviathan):
+---
 
-Executing complex SPARQL queries directly on the in-memory graph.
+## 🛠️ Technologies Used
 
-Support for filtering, selection, and projection.
+- **Backend**: ASP.NET Core Web API (.NET 8)
+- **Semantic Library**: dotNetRDF (v3.x)
+- **Frontend**: Angular
+- **Data Format**: Turtle (`.ttl`)
 
-Reasoning (Inference):
+---
 
-Using StaticRdfsReasoner to automatically deduce new information.
+## ⚙️ Installation and Setup
 
-Support for RDFS (subClassOf, subPropertyOf).
+### 1️⃣ Backend (.NET)
+1. Ensure you have the **.NET SDK** installed.
+2. Run the following commands:
+   ```bash
+   cd Backend
+   dotnet restore
+   dotnet run
+   ```
+3. The backend will start at `https://localhost:7148` (or similar).
 
-Federated Querying:
+### 2️⃣ Frontend (Angular)
+1. Ensure you have **Node.js** and **Angular CLI** installed.
+2. Run the following commands:
+   ```bash
+   cd Frontend/WebAppFE
+   npm install
+   ng serve
+   ```
+3. The frontend will be accessible at `http://localhost:4200`.
 
-Connecting to external SPARQL endpoints (e.g., DBpedia) to fetch live data from the internet.
+---
 
-🛠️ Technologies Used
+##  API Documentation
 
-Backend: ASP.NET Core Web API (.NET 8)
+### 🔹 Graph Controller (Data Manipulation)
+| Method | Endpoint           | Description                     | Parameters                     |
+|--------|--------------------|---------------------------------|--------------------------------|
+| GET    | `/api/Graph`       | Returns all triples in the graph (JSON). | -                              |
+| POST   | `/api/Graph/triple`| Adds a new triple.              | `?s=URI, ?p=URI, ?o=URI`       |
+| GET    | `/api/Graph/export`| Downloads the serialized graph. | `?format=turtle` (or `jsonld`, `xml`, `ntriples`)|
 
-Semantic Library: dotNetRDF (v3.x)
+### 🔹 Query Controller (Local SPARQL)
+| Method | Endpoint   | Description                     | Body (JSON)                     |
+|--------|------------|---------------------------------|---------------------------------|
+| POST   | `/api/Query`| Executes a SPARQL query on local data. | `{ "query": "SELECT * WHERE { ?s ?p ?o }" }` |
 
-Frontend: Angular
+### 🔹 Reasoning Controller (Inference)
+| Method | Endpoint       | Description                     | Effect                          |
+|--------|----------------|---------------------------------|---------------------------------|
+| POST   | `/api/Reasoning`| Applies RDFS rules and materializes deductions. | Automatically adds new triples to the graph. |
 
-Data Format: Turtle (.ttl)
+### 🔹 External Controller (DBpedia)
+| Method | Endpoint               | Description                     | Parameters                     |
+|--------|------------------------|---------------------------------|--------------------------------|
+| GET    | `/api/External/dbpedia`| Queries Wikipedia (DBpedia) via SPARQL. | `?query=SELECT...`            |
 
-⚙️ Installation and Setup
+---
 
-1. Backend (.NET)
-
-Ensure you have the .NET SDK installed.
-
-cd Backend
-dotnet restore
-dotnet run
-
-
-
-The backend will start at https://localhost:7148 (or similar).
-
-2. Frontend (Angular)
-
-Ensure you have Node.js and Angular CLI installed.
-
-cd Frontend/WebAppFE
-npm install
-ng serve
-
-
-
-The frontend will be accessible at http://localhost:4200.
-
-
-
- API Documentation
-
-🔹 Graph Controller (Data Manipulation)
-
-Method
-
-Endpoint
-
-Description
-
-Parameters
-
-GET
-
-/api/Graph
-
-Returns all triples in the graph (JSON).
-
--
-
-POST
-
-/api/Graph/triple
-
-Adds a new triple.
-
-?s=URI, ?p=URI, ?o=URI
-
-GET
-
-/api/Graph/export
-
-Downloads the serialized graph.
-
-?format=turtle (or jsonld, xml, ntriples)
-
-🔹 Query Controller (Local SPARQL)
-
-Method
-
-Endpoint
-
-Description
-
-Body (JSON)
-
-POST
-
-/api/Query
-
-Executes a SPARQL query on local data.
-
-{ "query": "SELECT * WHERE { ?s ?p ?o }" }
-
-🔹 Reasoning Controller (Inference)
-
-Method
-
-Endpoint
-
-Description
-
-Effect
-
-POST
-
-/api/Reasoning
-
-Applies RDFS rules and materializes deductions.
-
-Automatically adds new triples to the graph.
-
-🔹 External Controller (DBpedia)
-
-Method
-
-Endpoint
-
-Description
-
-Parameters
-
-GET
-
-/api/External/dbpedia
-
-Queries Wikipedia (DBpedia) via SPARQL.
-
-?query=SELECT...
-
- Demo Scenario: Reasoning
+## 🎯 Demo Scenario: Reasoning
 
 To test the inference functionality, follow this scenario:
 
-1. Initial Schema (Rules):
-The system is configured with the following RDFS rules:
+1. **Initial Schema (Rules):**
+   - Dog is a subclass of Animal.
+   - `isFriendWith` is a sub-property of `knows`.
 
-Dog is a subclass of Animal.
+2. **Add Fact (Input):**
+   Add a triple that simply states: `"Ion is friend with Maria"`.
+   - **Subject**: `http://example.org/Ion`
+   - **Predicate**: `http://example.org/isFriendWith`
+   - **Object**: `http://example.org/Maria`
 
-isFriendWith is a sub-property of knows.
+3. **Execute Reasoning:**
+   Call the `/api/Reasoning` endpoint.
 
-2. Add Fact (Input):
-Add a triple that simply states: "Ion is friend with Maria".
+4. **Result (Output):**
+   Query the graph for the `knows` relationship. The system will automatically return:
+   - `"Ion knows Maria"` (automatically deduced relationship).
 
-Subject: http://example.org/Ion
+---
 
-Predicate: http://example.org/isFriendWith
+##  Project Structure
 
-Object: http://example.org/Maria
-
-3. Execute Reasoning:
-Call the /api/Reasoning endpoint.
-
-4. Result (Output):
-Query the graph for the knows relationship. The system will automatically return:
-
-"Ion knows Maria" (automatically deduced relationship).
-
-Project Structure
-
+```
 /
 ├── Backend/      # .NET Backend
 │   ├── Controllers/           # API Endpoints
@@ -204,3 +130,4 @@ Project Structure
 │   ├── src/app/               # Components and Services
 │   └── ...
 └── README.md                  # Documentation
+```
